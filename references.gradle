@@ -42,7 +42,7 @@ ext.deps = [
 
         retrofit                            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
         retrofitGsonConverter               : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-        retrofitRxJavaAdapter               : "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion",
+        retrofitRxJavaAdapter               : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
         okHttp                              : "com.squareup.okhttp:okhttp:$okHttpVersion",
         interceptor                         : "com.squareup.okhttp3:logging-interceptor:$interceptorVersion",
 
