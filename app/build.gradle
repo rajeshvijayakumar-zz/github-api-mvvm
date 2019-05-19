@@ -90,18 +90,50 @@ dependencies {
     implementation rootProject.ext.deps.androidSupportLibraryAppCompact
     implementation rootProject.ext.deps.androidSupportLibraryDesign
 
+    //Dagger 2
+    implementation rootProject.ext.deps.dagger2
+    implementation rootProject.ext.deps.dagger2SupportLibrary
+    implementation rootProject.ext.deps.dagger2AnnotationProcessor
+
+    // Lifecycle components
+    implementation rootProject.ext.deps.liveDataExtension
+    annotationProcessor rootProject.ext.deps.liveDataCompiler
+
+    //Retrofit
     implementation rootProject.ext.deps.retrofit
     implementation rootProject.ext.deps.retrofitGsonConverter
     implementation rootProject.ext.deps.retrofitRxJavaAdapter
+
+    //Rx Library
     implementation rootProject.ext.deps.rxJava
     implementation rootProject.ext.deps.rxAndroid
+
+    //OK Http and Interceptor
     implementation rootProject.ext.deps.okHttp
     implementation rootProject.ext.deps.interceptor
 
+    //Google Gson
+    implementation rootProject.ext.deps.gson
+
     implementation rootProject.ext.deps.multidex
 
-    implementation rootProject.ext.deps.gson
+    //Image Loading
     implementation rootProject.ext.deps.glide
 
     testImplementation rootProject.ext.deps.junit
+
+    testImplementation 'org.mockito:mockito-core:2.10.0'
+    implementation 'com.squareup.retrofit2:retrofit-mock:2.2.0'
+    androidTestImplementation 'org.mockito:mockito-android:2.7.19'
+    testImplementation("android.arch.core:core-testing:1.1.0", {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+    })
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
 }

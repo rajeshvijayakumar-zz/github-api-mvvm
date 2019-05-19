@@ -13,6 +13,8 @@ ext {
     PROGUARD_POLICIES = 'proguard-rules.pro'
 
     //Libraries Version Codes
+    dagger2Version = '2.13'
+    liveDataVersion = '1.1.1'
     retrofitVersion = '2.5.0'
     gsonVersion = '2.8.4'
     okHttpVersion = '2.7.2'
@@ -31,21 +33,28 @@ ext.deps = [
         androidSupportLibraryAppCompact     : "com.android.support:appcompat-v7:$androidSupportLibraryVersion",
         androidSupportLibraryDesign         : "com.android.support:design:$androidSupportLibraryVersion",
 
-        retrofit                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-        retrofitGsonConverter   : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-        retrofitRxJavaAdapter   : "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion",
-        okHttp                  : "com.squareup.okhttp:okhttp:$okHttpVersion",
-        interceptor             : "com.squareup.okhttp3:logging-interceptor:$interceptorVersion",
+        dagger2                             : "com.google.dagger:dagger:$dagger2Version",
+        dagger2SupportLibrary               : "com.google.dagger:dagger-android-support:$dagger2Version",
+        dagger2AnnotationProcessor          : "com.google.dagger:dagger-compiler:$dagger2Version",
 
-        glide                   : "com.github.bumptech.glide:glide:$glideVersion",
+        liveDataExtension                   : "android.arch.lifecycle:extensions:$liveDataVersion",
+        liveDataCompiler                    : "android.arch.lifecycle:compiler:$liveDataVersion",
 
-        rxJava                  : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
-        rxAndroid               : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+        retrofit                            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+        retrofitGsonConverter               : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+        retrofitRxJavaAdapter               : "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion",
+        okHttp                              : "com.squareup.okhttp:okhttp:$okHttpVersion",
+        interceptor                         : "com.squareup.okhttp3:logging-interceptor:$interceptorVersion",
 
-        gson                    : "com.google.code.gson:gson:$gsonVersion",
+        glide                               : "com.github.bumptech.glide:glide:$glideVersion",
 
-        multidex                : "com.android.support:multidex:$multidexVersion",
+        rxJava                              : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
+        rxAndroid                           : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
 
-        junit                   : "junit:junit:$junitVersion",
+        gson                                : "com.google.code.gson:gson:$gsonVersion",
+
+        multidex                            : "com.android.support:multidex:$multidexVersion",
+
+        junit                               : "junit:junit:$junitVersion",
 
 ]
