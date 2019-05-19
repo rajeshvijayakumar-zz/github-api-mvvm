@@ -13,7 +13,7 @@ ext {
     PROGUARD_POLICIES = 'proguard-rules.pro'
 
     //Libraries Version Codes
-    dagger2Version = '2.13'
+    dagger2Version = '2.14.1'
     liveDataVersion = '1.1.1'
     retrofitVersion = '2.5.0'
     gsonVersion = '2.8.4'
@@ -35,8 +35,8 @@ ext.deps = [
 
         dagger2                             : "com.google.dagger:dagger:$dagger2Version",
         dagger2SupportLibrary               : "com.google.dagger:dagger-android-support:$dagger2Version",
-        dagger2AnnotationProcessor          : "com.google.dagger:dagger-compiler:$dagger2Version",
-
+        dagger2AnnotationCompiler           : "com.google.dagger:dagger-compiler:$dagger2Version",
+        dagger2AnnotationProcessor          : "com.google.dagger:dagger-android-processor:$dagger2Version",
         liveDataExtension                   : "android.arch.lifecycle:extensions:$liveDataVersion",
         liveDataCompiler                    : "android.arch.lifecycle:compiler:$liveDataVersion",
 

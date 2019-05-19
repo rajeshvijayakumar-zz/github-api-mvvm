@@ -93,7 +93,8 @@ dependencies {
     //Dagger 2
     implementation rootProject.ext.deps.dagger2
     implementation rootProject.ext.deps.dagger2SupportLibrary
-    implementation rootProject.ext.deps.dagger2AnnotationProcessor
+    annotationProcessor rootProject.ext.deps.dagger2AnnotationCompiler
+    annotationProcessor rootProject.ext.deps.dagger2AnnotationProcessor
 
     // Lifecycle components
     implementation rootProject.ext.deps.liveDataExtension

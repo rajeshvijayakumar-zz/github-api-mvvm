@@ -14,6 +14,6 @@ import java.util.Map;
 public interface ApiInterface {
 
         @GET("/repos/{user}/{repo}/pulls")
-        Single<Response<List<PullRequest>>> getPullRequests(@Path("user") String user, @Path("repo") String repo, @QueryMap(encoded = true) Map<String, String> options);
+        Single<List<PullRequest>> getPullRequests(@Path("user") String user, @Path("repo") String repo, @QueryMap(encoded = true) Map<String, String> options);
 
 }
