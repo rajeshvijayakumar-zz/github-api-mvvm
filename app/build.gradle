@@ -1,23 +1,85 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
     defaultConfig {
         applicationId "com.meesho.github"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionName rootProject.ext.versionName
+        versionCode rootProject.ext.versionCode
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        multiDexEnabled Boolean.TRUE
+        testInstrumentationRunner rootProject.ext.instrumentationRunner
+        vectorDrawables.useSupportLibrary = Boolean.TRUE
+        archivesBaseName = rootProject.ext.AppName
     }
-    buildTypes {
+
+    dataBinding {
+        enabled = Boolean.TRUE
+    }
+
+    dexOptions {
+        preDexLibraries = Boolean.FALSE
+        javaMaxHeapSize "4g"
+        keepRuntimeAnnotatedClasses Boolean.FALSE
+    }
+
+    // This is important, it will run lint checks but won't abort build
+    lintOptions {
+        checkReleaseBuilds Boolean.FALSE
+        abortOnError Boolean.FALSE
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    signingConfigs {
         release {
+            storeFile file("$project.rootDir/GithubApi.jks")
+            storePassword "qwerty12345"
+            keyAlias "Rajesh VJ"
+            keyPassword "qwerty12345"
+        }
+
+        debug {
+            storeFile file("$project.rootDir/GithubApi.jks")
+            storePassword "qwerty12345"
+            keyAlias "Rajesh VJ"
+            keyPassword "qwerty12345"
+        }
+    }
+
+    sourceSets {
+        debug {
+            res.srcDirs = ['src/debug/res']
+        }
+
+        release {
+            res.srcDirs = ['src/release/res']
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            buildConfigField('String', 'CLIENT_ID', CLIENT_ID)
+            buildConfigField('String', "CLIENT_SECRET", CLIENT_SECRET)
+            debuggable true
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile(rootProject.ext.PROGUARD_FILENAME), rootProject.ext.PROGUARD_POLICIES
+        }
+
+        release {
+            buildConfigField('String', 'CLIENT_ID', CLIENT_ID)
+            buildConfigField('String', "CLIENT_SECRET", CLIENT_SECRET)
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile(rootProject.ext.PROGUARD_FILENAME), rootProject.ext.PROGUARD_POLICIES
         }
     }
 }
@@ -25,9 +87,21 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation rootProject.ext.deps.androidSupportLibraryAppCompact
+    implementation rootProject.ext.deps.androidSupportLibraryDesign
+
+    implementation rootProject.ext.deps.retrofit
+    implementation rootProject.ext.deps.retrofitGsonConverter
+    implementation rootProject.ext.deps.retrofitRxJavaAdapter
+    implementation rootProject.ext.deps.rxJava
+    implementation rootProject.ext.deps.rxAndroid
+    implementation rootProject.ext.deps.okHttp
+    implementation rootProject.ext.deps.interceptor
+
+    implementation rootProject.ext.deps.multidex
+
+    implementation rootProject.ext.deps.gson
+    implementation rootProject.ext.deps.glide
+
+    testImplementation rootProject.ext.deps.junit
 }
