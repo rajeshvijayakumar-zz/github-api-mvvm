@@ -1,28 +1,11 @@
 package com.meesho.github;
 
-import com.meesho.github.component.ApplicationComponent;
-import com.meesho.github.component.DaggerApplicationComponent;
-import dagger.android.AndroidInjector;
-import dagger.android.support.DaggerApplication;
+import com.meesho.github.base.BaseApplication;
 
-public class MGApplication extends DaggerApplication {
-
-    private static MGApplication instance;
+public class MGApplication extends BaseApplication {
 
     @Override
     public void onCreate() {
         super.onCreate();
-    }
-
-    public static synchronized MGApplication getInstance() {
-        return instance;
-    }
-
-    @Override
-    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-        ApplicationComponent component = DaggerApplicationComponent.builder().application(this).build();
-        component.inject(this);
-
-        return component;
     }
 }

@@ -123,6 +123,10 @@ dependencies {
 
     testImplementation rootProject.ext.deps.junit
 
+    implementation rootProject.ext.deps.butterKnife
+//    implementation 'com.android.support:support-v4:27.1.1'
+    annotationProcessor rootProject.ext.deps.butterKnifeCompiler
+
     testImplementation 'org.mockito:mockito-core:2.10.0'
     implementation 'com.squareup.retrofit2:retrofit-mock:2.2.0'
     androidTestImplementation 'org.mockito:mockito-android:2.7.19'
